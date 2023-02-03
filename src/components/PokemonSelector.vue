@@ -6,7 +6,7 @@
     >
         <template v-slot:selection="data">
             <img class="pokemon-icon" :src="require(`../assets/img/pokemon/${getImageName(data.item)}`)" />
-            <span class="mx-4 text-h6">{{ data.item }}</span>
+            <span class="mx-4 text-h6"> {{ data.item }}</span>
         </template>
         <template v-slot:item="data">
             <img class="pokemon-icon" :src="require(`../assets/img/pokemon/${getImageName(data.item)}`)" />

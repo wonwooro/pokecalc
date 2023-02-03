@@ -11,7 +11,7 @@
       </v-avatar>
       <v-divider></v-divider>
       <v-list>
-        <v-list-item v-for="m in menu" v-bind:key="m" style="padding: 0; margin: 0">
+        <v-list-item v-for="m in menu" v-bind:key="m.path" style="padding: 0; margin: 0">
           <v-tooltip right>
             <template v-slot:activator="{ on, attrs }">
               <v-btn :href="m.path" class="mx-auto mt-2 mb-2" fab small color="secondary" v-bind="attrs" v-on="on">

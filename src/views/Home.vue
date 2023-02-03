@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid id="main" style="padding-left: 5vw; padding-top: 5vh">
+    <v-container fluid id="home" style="padding-left: 5vw; padding-top: 5vh">
         <v-row>
             <v-col cols="12">
                 <h1 style="margin-bottom: 5vh;">마스터볼: 실전 포켓몬 계산기</h1>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style scoped>
-    #main {
+    #home {
         background-image: url("../assets/img/masterball.png");
         background-size: 25%;
         background-position-x: right;

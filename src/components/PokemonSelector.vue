@@ -3,6 +3,7 @@
         v-model="selectedName"
         :items="pokemonNameList"
         @change="change"
+        :disabled="disabled"
     >
         <template v-slot:selection="data">
             <img class="pokemon-icon" :src="require(`../assets/img/pokemon/${getImageName(data.item)}`)" />
@@ -20,6 +21,11 @@ import pokemonStats from '../assets/data/pokemonStats.json'
 
 export default {
     name: "PokemonSelector",
+    props: {
+        disabled: {
+            type: Boolean
+        }
+    },
     data () {
         return {
             pokemonNameList: pokemonStats.keys,

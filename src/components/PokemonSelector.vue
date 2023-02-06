@@ -36,7 +36,10 @@ export default {
         },
         change () {
             this.selected = this.pokemonInfo[this.selectedName];
-            console.log(this.selected);
+            this.$emit('pokemonChange', this.selected);
+        },
+        getSelectedPokemon () {
+            return this.selected;
         }
     }
 }

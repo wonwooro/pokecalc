@@ -8,7 +8,7 @@
         <v-row>
             <v-col>
                 <h2 :class="(pokemonConfirmed)?'confirmed':''">
-                    1단계: 포켓몬을 선택하세요. 
+                    ▶ 1단계: 포켓몬을 선택하세요. 
                     <v-icon v-if="pokemonConfirmed" color="#4aa832">mdi-check</v-icon>
                 </h2>
             </v-col>
@@ -33,7 +33,7 @@
         <v-row v-if="pokemonConfirmed">
             <v-col>
                 <h2 :class="(statConfirmed)?'confirmed':''">
-                    2단계: 성격, 개체치, 기초 포인트 (노력치) 를 설정하세요.
+                    ▶ 2단계: 성격, 개체치, 기초 포인트 (노력치) 를 설정하세요.
                     <v-icon v-if="statConfirmed" color="#4aa832">mdi-check</v-icon>
                 </h2>
             </v-col>
@@ -46,16 +46,21 @@
         <v-row v-if="pokemonConfirmed && !statConfirmed">
             <v-col cols="12"><v-btn width="100%" color="primary" @click="confirmStats">결정</v-btn></v-col>
         </v-row>
-        <v-row v-if="statConfirmed" :class="(toolConfirmed)?'confirmed':''">
+        <v-row v-if="statConfirmed" :class="(moveConfirmed)?'confirmed':''">
             <v-col>
                 <h2>
-                    3단계: 기술을 선택하세요.
-                    <v-icon v-if="toolConfirmed" color="#4aa832">mdi-check</v-icon>
+                    ▶ 3단계: 기술을 선택하세요.
+                    <v-icon v-if="moveConfirmed" color="#4aa832">mdi-check</v-icon>
                 </h2>
             </v-col>
         </v-row>
-        <v-row>
-            
+        <v-row v-if="statConfirmed">
+            <v-col>
+                <pokemon-move-selector :disabled="moveConfirmed"/>
+            </v-col>
+        </v-row>
+        <v-row v-if="statConfirmed && !moveConfirmed">
+            <v-col cols="12"><v-btn width="100%" color="primary" @click="confirmStats">결정</v-btn></v-col>
         </v-row>
     </v-container>
 </template>
@@ -64,18 +69,20 @@
 import PokemonSelector from '../components/PokemonSelector.vue';
 import PokemonBasicInfo from '../components/PokemonBasicInfo.vue';
 import PokemonStatInputTable from '../components/PokemonStatInputTable.vue';
+import PokemonMoveSelector from '../components/PokemonMoveSelector.vue';
 
 //import TypeChip from '../components/TypeChip.vue';
 
 export default {
     name: 'NewPokemon',
-    components: { PokemonSelector, PokemonBasicInfo, PokemonStatInputTable, /*TypeChip*/ },
+    components: { PokemonSelector, PokemonBasicInfo, PokemonStatInputTable, PokemonMoveSelector },
     data () {
         return {
             selectedPokemon: null,
             stats: null,
             pokemonConfirmed: false,
-            statConfirmed: false
+            statConfirmed: false,
+            moveConfirmed: false
         }
     },
     methods: {

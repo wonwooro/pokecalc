@@ -16,10 +16,6 @@
         <v-row v-if="!pokemonConfirmed">
             <v-col>
                 <pokemon-selector @pokemonChange="pokemonChange" :disabled="pokemonConfirmed"></pokemon-selector>
-                <!--
-                <type-chip :type="(selectedPokemon) ? selectedPokemon.type_1 : ''" />
-                <type-chip :type="(selectedPokemon) ? (selectedPokemon.type_2 ?? '') : ''" />
-                -->
             </v-col>
         </v-row>
         <v-row>
@@ -60,7 +56,7 @@
             </v-col>
         </v-row>
         <v-row v-if="statConfirmed && !moveConfirmed">
-            <v-col cols="12"><v-btn width="100%" color="primary" @click="confirmStats">결정</v-btn></v-col>
+            <v-col cols="12"><v-btn width="100%" color="primary" @click="confirmMoves">결정</v-btn></v-col>
         </v-row>
     </v-container>
 </template>
@@ -95,6 +91,9 @@ export default {
         confirmStats () {
             this.stats = this.$refs.statInputTable.getStatInfo();
             this.statConfirmed = true;
+        },
+        confirmMoves () {
+            this.movesConfirmed = true;
         }
     }
 }
